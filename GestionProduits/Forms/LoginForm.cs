@@ -10,6 +10,7 @@ namespace GestionProduits.Forms
         public LoginForm()
         {
             InitializeComponent();
+            this.AcceptButton = btnConnexion;
         }
         private void btnConnexion_Click(object sender, EventArgs e)
         {

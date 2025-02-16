@@ -83,7 +83,7 @@
             btnModifier.TabIndex = 4;
             btnModifier.Text = "Modifier";
             btnModifier.UseVisualStyleBackColor = true;
-            btnModifier.Click += BtnModifier_Click;
+            btnModifier.Click += btnModifier_Click2;
             // 
             // btnSupprimer
             // 
@@ -113,6 +113,7 @@
             dataGridViewProduits.RowHeadersWidth = 62;
             dataGridViewProduits.Size = new System.Drawing.Size(642, 225);
             dataGridViewProduits.TabIndex = 7;
+            dataGridViewProduits.SelectionChanged += dataGridViewProduits_SelectionChanged;
             // 
             // btnAjouter
             // 
@@ -144,7 +145,7 @@
             btnGenererPDF.UseVisualStyleBackColor = true;
             btnGenererPDF.Click += btnGenererPDF_Click;
             // 
-            // Form1
+            // Products
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -160,7 +161,7 @@
             Controls.Add(label1);
             Controls.Add(txtPrix);
             Controls.Add(txtNom);
-            Name = "Form1";
+            Name = "Products";
             Text = "Gestion des produits";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewProduits).EndInit();

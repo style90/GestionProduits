@@ -73,14 +73,40 @@ namespace GestionProduits
         }
 
 
-        private void btnModifier_Click(object sender, EventArgs e)
+        private void btnModifier_Click2(object sender, EventArgs e)
         {
             if (dataGridViewProduits.SelectedRows.Count > 0)
             {
-                Produit product = new();
-                int id = Convert.ToInt32(dataGridViewProduits.SelectedRows[0].Cells["id"].Value);
-                product.ModifierProduit(id, txtNom.Text, decimal.Parse(txtPrix.Text));
-                ChargerProduits();
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(txtNom.Text) || string.IsNullOrWhiteSpace(txtPrix.Text))
+                    {
+                        MessageBox.Show("Veuillez remplir tous les champs.");
+                        return;
+                    }
+
+                    decimal prix;
+                    if (!decimal.TryParse(txtPrix.Text, out prix))
+                    {
+                        MessageBox.Show("Le prix doit être un nombre valide.");
+                        return;
+                    }
+
+                    //Produit p = new(txtNom.Text, prix);
+
+                    Produit product = new();
+                    int id = Convert.ToInt32(dataGridViewProduits.SelectedRows[0].Cells["id"].Value);
+                    product.ModifierProduit(id, txtNom.Text, decimal.Parse(txtPrix.Text));
+
+
+                    ChargerProduits();
+                    MessageBox.Show("Produit modifié avec succès !");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur : " + ex.Message);
+                }
+
             }
         }
 
@@ -120,7 +146,7 @@ namespace GestionProduits
 
         private void btnGenererPDF_Click(object sender, EventArgs e)
         {
-            var report = new ProductReports(); 
+            var report = new ProductReports();
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Filter = "PDF Files (*.pdf)|*.pdf",
@@ -131,6 +157,21 @@ namespace GestionProduits
             {
                 report.GenererPDFProduits(saveFileDialog.FileName);
                 MessageBox.Show("PDF généré avec succès !");
+            }
+        }
+
+        private void dataGridViewProduits_SelectionChanged(object sender, EventArgs e)
+        {
+            // Vérifier s'il y a au moins une ligne sélectionnée
+            if (dataGridViewProduits.SelectedRows.Count > 0)
+            {
+                // Récupérer la ligne sélectionnée
+                DataGridViewRow row = dataGridViewProduits.SelectedRows[0];
+
+                // Assigner les valeurs des cellules aux champs texte
+                
+                txtNom.Text = row.Cells["Nom"].Value?.ToString();
+                txtPrix.Text = row.Cells["Prix"].Value?.ToString();
             }
         }
     }

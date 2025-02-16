@@ -32,7 +32,7 @@
             txtPassWord = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             txtMotDePasse = new System.Windows.Forms.Label();
-            button1 = new System.Windows.Forms.Button();
+            btnConnexion = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
             // txtEmail
@@ -48,6 +48,7 @@
             txtPassWord.Name = "txtPassWord";
             txtPassWord.Size = new System.Drawing.Size(385, 31);
             txtPassWord.TabIndex = 3;
+            txtPassWord.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -67,23 +68,23 @@
             txtMotDePasse.TabIndex = 5;
             txtMotDePasse.Text = "Mot de passe :";
             // 
-            // button1
+            // btnConnexion
             // 
-            button1.CausesValidation = false;
-            button1.Location = new System.Drawing.Point(263, 328);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(386, 34);
-            button1.TabIndex = 6;
-            button1.Text = "Connexion";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += btnConnexion_Click;
+            btnConnexion.CausesValidation = false;
+            btnConnexion.Location = new System.Drawing.Point(263, 328);
+            btnConnexion.Name = "btnConnexion";
+            btnConnexion.Size = new System.Drawing.Size(386, 34);
+            btnConnexion.TabIndex = 6;
+            btnConnexion.Text = "Connexion";
+            btnConnexion.UseVisualStyleBackColor = true;
+            btnConnexion.Click += btnConnexion_Click;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(713, 373);
-            Controls.Add(button1);
+            Controls.Add(btnConnexion);
             Controls.Add(txtMotDePasse);
             Controls.Add(label1);
             Controls.Add(txtPassWord);
@@ -101,6 +102,6 @@
         private System.Windows.Forms.TextBox txtPassWord;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label txtMotDePasse;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnConnexion;
     }
 }
